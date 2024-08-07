@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=file:///Users/jondotsoy/Repositories/jondotsoy/q/schema.json
-
-messages:
-  - system: |-
-      Make a document markdown to write a standard to write week information
