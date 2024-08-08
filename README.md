@@ -8,6 +8,8 @@ This project is inspired by the article "Your Life in Weeks" published on Wait B
 
 You can see a live version of this project at https://jondotsoy.github.io/your-life-in-weeks/. This demo showcases a plantilla for all the weeks in your life.
 
+![Life Demo](docs/assets/life-demo.png)
+
 ## Project Description
 
 This project generates markdown files, one per week, outlining the structure of human life. The idea is to visualize how each stage of life fits together and help you appreciate the importance of every moment.
