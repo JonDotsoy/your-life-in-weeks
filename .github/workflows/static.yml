@@ -34,6 +34,8 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: build
+        run: bun build make-your-life-in-weeks-md.ts --outfile static/make-your-life-in-weeks-md.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
