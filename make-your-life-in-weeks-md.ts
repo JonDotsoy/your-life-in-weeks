@@ -1,7 +1,6 @@
 // make-your-life-in-weeks-md.ts
 interface Writer {
     write(chunk: string): void
-    end(): Promise<any> | any
 }
 
 export const DAY_MS = 24 * 60 * 60 * 1000;
@@ -42,7 +41,7 @@ export class TitleElement {
     }
 }
 
-export async function makeYourLifeInWeeks(birth: Date, writer: Writer) {
+export function makeYourLifeInWeeks(birth: Date, writer: Writer) {
     const currentTime = { current: new Date(birth) };
 
     const weeksIndexState = { current: 0 };
