@@ -10,6 +10,8 @@ You can see a live version of this project at https://jondotsoy.github.io/your-l
 
 ![Life Demo](docs/assets/life-demo.png)
 
+- [es](https://jondotsoy.github.io/your-life-in-weeks/?lang=es): https://jondotsoy.github.io/your-life-in-weeks/?lang=es
+
 ## Project Description
 
 This project generates markdown files, one per week, outlining the structure of human life. The idea is to visualize how each stage of life fits together and help you appreciate the importance of every moment.
