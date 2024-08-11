@@ -35,7 +35,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: build
-        run: bun build make-your-life-in-weeks-md.ts --outfile static/make-your-life-in-weeks-md.js
+        run: make build-static fmt-static
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
