@@ -1,0 +1,21 @@
+:root {
+  --color-bg-1: #7bcffd;
+  --color-1: #00a6fb;
+  --color-2: #0582ca;
+  --color-3: #006494;
+  --color-4: #003554;
+  --color-5: #051923;
+  --color-text-1: #d1dfe7;
+  --color-text-2: #0582ca;
+  --color-text-3: #006494;
+  --color-text-4: #003554;
+  --color-text-5: #051923;
+}
+
+pre {
+  overflow: auto;
+  border-radius: 0.5em;
+  padding: 2em;
+  background: var(--color-4);
+  color: var(--color-text-1);
+}

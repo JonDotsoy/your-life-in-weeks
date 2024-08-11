@@ -1,161 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css"
+    />
+    <title>Your Life In Weeks</title>
+    <link rel="stylesheet" href="./style.css" />
     <style>
-        :root {
-            --color-1: #00a6fb;
-            --color-2: #0582ca;
-            --color-3: #006494;
-            --color-4: #003554;
-            --color-5: #051923;
-            --color-text-1: #d1dfe7;
-            --color-text-2: #0582ca;
-            --color-text-3: #006494;
-            --color-text-4: #003554;
-            --color-text-5: #051923;
+      .form-birth-date {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+      }
+
+      .form-birth-date p {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .form-birth-date input {
+        padding: 10px;
+        width: 20ch;
+        border-radius: 0.5em;
+        border: solid 0.05em;
+      }
+
+      .render-container {
+        max-width: 80ch;
+        margin: auto;
+        padding: 1em;
+      }
+
+      .render-container pre {
+        overflow: auto;
+        border-radius: 0.5em;
+        padding: 2em;
+        background: var(--color-4);
+        color: var(--color-text-1);
+      }
+
+      .render-container .btn-copy {
+        display: grid;
+        grid-template-columns: auto auto;
+        border-style: solid;
+        border-radius: 0.4em;
+        border-width: 0.1px;
+      }
+
+      .solar--copy-bold {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M15.24 2h-3.894c-1.764 0-3.162 0-4.255.148c-1.126.152-2.037.472-2.755 1.193c-.719.721-1.038 1.636-1.189 2.766C3 7.205 3 8.608 3 10.379v5.838c0 1.508.92 2.8 2.227 3.342c-.067-.91-.067-2.185-.067-3.247v-5.01c0-1.281 0-2.386.118-3.27c.127-.948.413-1.856 1.147-2.593s1.639-1.024 2.583-1.152c.88-.118 1.98-.118 3.257-.118h3.07c1.276 0 2.374 0 3.255.118A3.6 3.6 0 0 0 15.24 2'/%3E%3Cpath fill='%23000' d='M6.6 11.397c0-2.726 0-4.089.844-4.936c.843-.847 2.2-.847 4.916-.847h2.88c2.715 0 4.073 0 4.917.847S21 8.671 21 11.397v4.82c0 2.726 0 4.089-.843 4.936c-.844.847-2.202.847-4.917.847h-2.88c-2.715 0-4.073 0-4.916-.847c-.844-.847-.844-2.21-.844-4.936z'/%3E%3C/svg%3E");
+        background-color: currentColor;
+        -webkit-mask-image: var(--svg);
+        mask-image: var(--svg);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+      }
+
+      .wrap-btn-copy {
+        display: flex;
+        align-items: center;
+        gap: 0.3em;
+        position: relative;
+
+        .alerts-box > * {
+          position: absolute;
+          top: 0px;
+          animation-name: message-tail;
+          animation-duration: var(--animation-duration);
+          opacity: 0;
+        }
+      }
+
+      @keyframes message-tail {
+        0% {
+          opacity: 100%;
         }
 
-        .form-birth-date {
-            display: grid;
-            justify-content: center;
-            justify-items: center;
-            align-items: center;
+        100% {
+          opacity: 0%;
         }
-
-        .form-birth-date p {
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-
-        .form-birth-date input {
-            padding: 10px;
-            width: 20em;
-            border-radius: 0.5em;
-            border: solid 0.05em;
-        }
-
-        .render-container {
-            max-width: 600px;
-            margin: auto;
-            padding: 1em;
-        }
-
-        .render-container pre {
-            overflow: auto;
-            border-radius: 0.5em;
-            padding: 2em;
-            background: var(--color-4);
-            color: var(--color-text-1);
-        }
-
-        .render-container .btn-copy {
-            display: grid;
-            grid-template-columns: auto auto;
-            border-radius: 0.5em;
-        }
-
-        .solar--copy-bold {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M15.24 2h-3.894c-1.764 0-3.162 0-4.255.148c-1.126.152-2.037.472-2.755 1.193c-.719.721-1.038 1.636-1.189 2.766C3 7.205 3 8.608 3 10.379v5.838c0 1.508.92 2.8 2.227 3.342c-.067-.91-.067-2.185-.067-3.247v-5.01c0-1.281 0-2.386.118-3.27c.127-.948.413-1.856 1.147-2.593s1.639-1.024 2.583-1.152c.88-.118 1.98-.118 3.257-.118h3.07c1.276 0 2.374 0 3.255.118A3.6 3.6 0 0 0 15.24 2'/%3E%3Cpath fill='%23000' d='M6.6 11.397c0-2.726 0-4.089.844-4.936c.843-.847 2.2-.847 4.916-.847h2.88c2.715 0 4.073 0 4.917.847S21 8.671 21 11.397v4.82c0 2.726 0 4.089-.843 4.936c-.844.847-2.202.847-4.917.847h-2.88c-2.715 0-4.073 0-4.916-.847c-.844-.847-.844-2.21-.844-4.936z'/%3E%3C/svg%3E");
-            background-color: currentColor;
-            -webkit-mask-image: var(--svg);
-            mask-image: var(--svg);
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="form-birth-date">
-        <p>When you were born?</p>
-        <input id="birthSelect" type="date" value="1991-07-18">
+      <p>
+        <text-locale data-text="When you were born?"
+          >When you were born?</text-locale
+        >
+      </p>
+      <input id="birthSelect" type="date" value="1991-07-18" />
     </div>
 
     <main class="render-container">
+      <div class="wrap-btn-copy">
         <button id="btn-copy" class="btn-copy">
-            <span class="solar--copy-bold"></span>
-            Copy
+          <span class="solar--copy-bold"></span>
+          <text-locale data-text="Copy">Copy</text-locale>
         </button>
-        <pre><code id="render"></code></pre>
+        <span id="copy-messages" class="alerts-box"></span>
+      </div>
+      <pre><code id="render"></code></pre>
     </main>
 
     <script type="module">
-        import { makeYourLifeInWeeks } from "./make-your-life-in-weeks-md.js"
+      import { l } from "./core.js";
+      import { makeYourLifeInWeeks } from "./make-your-life-in-weeks-md.js";
 
-        const atom = (init) => {
-            const state = { current: init };
-            const subs = new Set();
-            return {
-                value: () => state.current,
-                set: (value) => {
-                    state.current = value
-                    subs.forEach(sub => sub(state.current))
-                },
-                listen: (cb) => {
-                    subs.add(cb)
-                    return () => subs.delete(cb)
-                },
-                subscribe: (cb) => {
-                    subs.add(cb)
-                    cb(state.current)
-                    return () => subs.delete(cb)
-                }
-            }
+      const atom = (init) => {
+        const state = { current: init };
+        const subs = new Set();
+        return {
+          value: () => state.current,
+          set: (value) => {
+            state.current = value;
+            subs.forEach((sub) => sub(state.current));
+          },
+          listen: (cb) => {
+            subs.add(cb);
+            return () => subs.delete(cb);
+          },
+          subscribe: (cb) => {
+            subs.add(cb);
+            cb(state.current);
+            return () => subs.delete(cb);
+          },
+        };
+      };
+
+      /** @type {HTMLInputElement} */
+      const copyMessages = document.getElementById("copy-messages");
+      const btnCopy = document.getElementById("btn-copy");
+      const birthSelect = document.getElementById("birthSelect");
+      const render = document.getElementById("render");
+      const initialValue = atom(new Date(birthSelect.valueAsDate));
+      const outState = atom("");
+
+      birthSelect.addEventListener("change", (event) => {
+        initialValue.set(event.target.valueAsDate);
+      });
+
+      initialValue.subscribe((val) => {
+        let out = "";
+        const w = {
+          write: (txt) => {
+            out += txt;
+          },
+        };
+        makeYourLifeInWeeks(val, w);
+        render.innerText = out;
+        outState.set(out);
+      });
+
+      btnCopy.addEventListener("click", (event) => {
+        const val = outState.value();
+        if (navigator.clipboard) {
+          const obj = {};
+          if (ClipboardItem.supports("text/markdown")) {
+            obj["text/markdown"] = new Blob([val], { type: "text/markdown" });
+          }
+          if (ClipboardItem.supports("text/x-markdown")) {
+            obj["text/x-markdown"] = new Blob([val], {
+              type: "text/x-markdown",
+            });
+          }
+          // if (ClipboardItem.supports('text/html')) {
+          //     obj['text/html'] = new Blob([val], { type: 'text/html' });
+          // }
+          if (ClipboardItem.supports("text/plain")) {
+            obj["text/plain"] = new Blob([val], { type: "text/plain" });
+          }
+          navigator.clipboard.write([new ClipboardItem(obj)]);
+
+          const cmp = document.createElement("span");
+          cmp.style.setProperty("--animation-duration", "1s");
+          copyMessages.appendChild(cmp);
+          cmp.innerText = l`Copied`;
+          setTimeout(() => {
+            copyMessages.removeChild(cmp);
+          }, 1000);
         }
-
-        /** @type {HTMLInputElement} */
-        const btnCopy = document.getElementById('btn-copy');
-        const birthSelect = document.getElementById('birthSelect');
-        const render = document.getElementById('render');
-        const initialValue = atom(new Date(birthSelect.valueAsDate));
-        const outState = atom('')
-
-        birthSelect.addEventListener('change', (event) => {
-            initialValue.set(event.target.valueAsDate);
-        });
-
-        initialValue.subscribe(val => {
-            let out = ''
-            const w = { write: txt => { out += txt } }
-            makeYourLifeInWeeks(val, w);
-            render.innerText = out;
-            outState.set(out);
-        })
-
-        btnCopy.addEventListener("click", event => {
-            const val = outState.value()
-            if (navigator.clipboard) {
-                const obj = {};
-                if (ClipboardItem.supports('text/markdown')) {
-                    obj['text/markdown'] = new Blob([val], { type: 'text/markdown' });
-                }
-                if (ClipboardItem.supports('text/x-markdown')) {
-                    obj['text/x-markdown'] = new Blob([val], { type: 'text/x-markdown' });
-                }
-                // if (ClipboardItem.supports('text/html')) {
-                //     obj['text/html'] = new Blob([val], { type: 'text/html' });
-                // }
-                if (ClipboardItem.supports('text/plain')) {
-                    obj['text/plain'] = new Blob([val], { type: 'text/plain' });
-                }
-                navigator.clipboard.write([
-                    new ClipboardItem(obj),
-                ]);
-            }
-        })
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .container {
+        display: grid;
+        grid-template:
+          "." auto
+          "." auto
+          / auto;
+      }
+
+      .form-birth-date {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+      }
+
+      .form-birth-date p {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .form-birth-date input {
+        padding: 10px;
+        width: 20em;
+        border-radius: 0.5em;
+        border: solid 0.05em;
+      }
+
+      .render-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 1em;
+      }
+
+      header > h1 {
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      #calendar-cmp {
+        padding: 20px;
+        display: grid;
+        grid-gap: 20px;
+        grid-template:
+          ". top ." auto
+          "left calendar ." auto
+          / 1fr auto 1fr;
+      }
+
+      #calendar-cmp {
+        .labels-top,
+        .labels-left {
+          color: var(--color-4);
+        }
+
+        .labels-top {
+          grid-area: top;
+          display: grid;
+          grid-template-columns: auto 1fr;
+          align-items: center;
+          gap: 0.5em;
+        }
+
+        .labels-left {
+          grid-area: left;
+          transform-origin: 0 0;
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+      }
+
+      #calendar-cmp {
+        #draw-calendar {
+          grid-area: calendar;
+          display: grid;
+          grid-template-columns: repeat(52, 1fr);
+          /* grid-gap: 9px; */
+        }
+
+        #draw-calendar > box-week-component {
+          display: block;
+          width: 1.8em;
+          height: 1.8em;
+
+          &::before {
+            content: "";
+            display: block;
+            border-width: 0.1em;
+            border-style: solid;
+            width: 1em;
+            height: 1em;
+            transform: rotate(45deg);
+            border-radius: 0.1em;
+          }
+        }
+      }
+
+      #popper {
+        border-radius: 0.25em;
+        background-color: var(--color-bg-1);
+        padding: 0.1em 0.5em;
+        z-index: 1;
+        position: absolute;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transform: translate(var(--left), var(--top));
+        transition: all 0.3s;
+
+        &.visible-off {
+          opacity: 0%;
+          transform: translate(var(--left), 0);
+        }
+
+        &.visible-on {
+          opacity: 100%;
+          transform: translate(var(--left), var(--top));
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <span id="popper" class="visible-off">here</span>
+      <header>
+        <h1>
+          <text-locale data-text="Life Calendar">Life Calendar</text-locale>
+        </h1>
+      </header>
+
+      <main class="">
+        <div id="calendar-cmp">
+          <div class="labels-top">
+            <text-locale data-text="Week of the year"
+              >Week of the year</text-locale
+            >
+          </div>
+          <div class="labels-left">
+            <text-locale data-text="Year of your life"
+              >Year of your life</text-locale
+            >
+          </div>
+          <div id="draw-calendar"></div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module">
+      import { l } from "./core.js";
+
+      let indexEffect = null;
+
+      const popper = document.getElementById("popper");
+
+      class BoxWeekComponent extends HTMLElement {
+        static observedAttributes = ["x-week-index"];
+        weekIndex;
+
+        constructor() {
+          super();
+        }
+
+        connectedCallback() {
+          this.addEventListener("click", () => {
+            const offsetTop = this.offsetTop;
+            const offsetLeft = this.offsetLeft;
+            popper.innerText = l`Week ${this.weekIndex}`;
+            popper.style.setProperty("--left", `${offsetLeft}px`);
+            popper.style.setProperty("--top", `${offsetTop}px`);
+            popper.classList.replace("visible-off", "visible-on");
+            if (indexEffect !== null) {
+              clearTimeout(indexEffect);
+            }
+            indexEffect = setTimeout(() => {
+              popper.classList.replace("visible-on", "visible-off");
+            }, 5000);
+          });
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+          if (name === "x-week-index") {
+            this.weekIndex = newValue;
+            this.setAttribute("title", l`Week ${this.weekIndex}`);
+          }
+        }
+      }
+
+      window.customElements.define("box-week-component", BoxWeekComponent);
+
+      const drawCalendar = document.getElementById("draw-calendar");
+
+      const weeksCount = (364 / 7) * 90;
+      const weekIndexes = Array.from(Array(weeksCount), (_, i) => i);
+
+      for (const weekIndex of weekIndexes) {
+        const div = document.createElement("box-week-component");
+        div.setAttribute("x-week-index", `${weekIndex}`);
+        drawCalendar.appendChild(div);
+      }
+    </script>
+  </body>
+</html>
