@@ -63,6 +63,10 @@ Won the award for best fantasy writer 2017
 
 Want to know what's next for this project? Check out our [ROADMAP.md](./ROADMAP.md) file, where we outline our plans and vision for future developments. This document is publicly available and regularly updated, so you can stay informed about the latest updates and improvements.
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
 ## Contributing
 
 Feel free to contribute to this project by sending a pull request or suggesting new features.
