@@ -18,7 +18,8 @@ Additionally, you can explore our interactive "Life Calendar" feature:
 ![Life Calendar](docs/assets/life-calendar.png)
 
 *   Visit https://jondotsoy.github.io/your-life-in-weeks/life-calendar to view a graphical representation of the calendar.
-*   For Spanish language support, visit https://jondotsoy.github.io/your-life-in-weeks/life-calendar?lang=es.
+*   For Spanish language support, visit https://jondotsoy.github.io/your-life-in-weeks/life-calendar?lang=es
+*   You can also **download a printable PDF version** of the Life Calendar at [static/life-calendar-en.pdf](./static/life-calendar-en.pdf) (English) or [static/life-calendar-es.pdf](./static/life-calendar-es.pdf) (Spanish).
 
 ## Project Description
 
