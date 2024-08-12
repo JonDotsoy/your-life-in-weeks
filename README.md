@@ -10,7 +10,15 @@ You can see a live version of this project at https://jondotsoy.github.io/your-l
 
 ![Life Demo](docs/assets/life-demo.png)
 
-- [es](https://jondotsoy.github.io/your-life-in-weeks/?lang=es): https://jondotsoy.github.io/your-life-in-weeks/?lang=es
+* Visit https://jondotsoy.github.io/your-life-in-weeks/
+* For Spanish Language support, visit https://jondotsoy.github.io/your-life-in-weeks/?lang=es
+
+Additionally, you can explore our interactive "Life Calendar" feature:
+
+![Life Calendar](docs/assets/life-calendar.png)
+
+*   Visit https://jondotsoy.github.io/your-life-in-weeks/life-calendar to view a graphical representation of the calendar.
+*   For Spanish language support, visit https://jondotsoy.github.io/your-life-in-weeks/life-calendar?lang=es.
 
 ## Project Description
 
