@@ -7,7 +7,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css"
     />
-    <title>Document</title>
+    <title>Life Calendar</title>
     <link rel="stylesheet" href="./style.css" />
     <style>
       .container {
@@ -46,6 +46,7 @@
       header > h1 {
         text-transform: uppercase;
         text-align: center;
+        font-size: 3em;
       }
 
       #calendar-cmp {
@@ -62,6 +63,7 @@
         .labels-top,
         .labels-left {
           color: var(--color-4);
+          font-size: 2em;
         }
 
         .labels-top {
@@ -84,24 +86,38 @@
         #draw-calendar {
           grid-area: calendar;
           display: grid;
-          grid-template-columns: repeat(52, 1fr);
-          /* grid-gap: 9px; */
-        }
 
-        #draw-calendar > box-week-component {
-          display: block;
-          width: 1.8em;
-          height: 1.8em;
+          & > .cell-week-index,
+          & > .cell-year-index {
+            font-size: 1em;
+          }
 
-          &::before {
-            content: "";
-            display: block;
-            border-width: 0.1em;
-            border-style: solid;
-            width: 1em;
-            height: 1em;
-            transform: rotate(45deg);
-            border-radius: 0.1em;
+          & > .cell-week-index {
+            text-align: center;
+            padding-bottom: 1em;
+          }
+
+          & > .cell-year-index {
+            text-align: right;
+            padding-right: 1em;
+          }
+
+          & > box-week-component {
+            display: grid;
+            width: 2em;
+            height: 2em;
+            justify-items: center;
+
+            &::before {
+              content: "";
+              display: block;
+              border-width: 0.1em;
+              border-style: solid;
+              width: 1em;
+              height: 1em;
+              transform: rotate(45deg);
+              border-radius: 0.1em;
+            }
           }
         }
       }
@@ -199,13 +215,59 @@
 
       const drawCalendar = document.getElementById("draw-calendar");
 
-      const weeksCount = (364 / 7) * 90;
+      const cellsYears = 90;
+      const cellsWeeks = 364 / 7;
+      const weeksCount = cellsWeeks * cellsYears;
       const weekIndexes = Array.from(Array(weeksCount), (_, i) => i);
+      const cellsYearsIndexes = Array.from(Array(cellsYears), (_, i) => i);
+      const cellsWeeksIndexes = Array.from(Array(cellsWeeks), (_, i) => i);
+
+      const f = [
+        ".",
+        ...cellsWeeksIndexes.map(
+          (cellsWeeksIndex) => `cell-week-${cellsWeeksIndex}`,
+        ),
+      ].join(" ");
+
+      let gridTemplate = `${JSON.stringify(f)} auto\n`;
+
+      for (const cellsYearsIndex of cellsYearsIndexes) {
+        const f = [
+          `cell-year-${cellsYearsIndex}`,
+          ...Array.from(
+            Array(cellsWeeks),
+            (_, i) => `cell-indicator-${cellsYearsIndex * cellsWeeks + i}`,
+          ),
+        ].join(" ");
+
+        gridTemplate += `${JSON.stringify(f)} auto\n`;
+      }
+
+      drawCalendar.style.gridTemplate = gridTemplate;
+
+      for (const cellsWeeksIndex of cellsWeeksIndexes) {
+        const elm = document.createElement("span");
+        elm.classList.add("cell-week-index");
+        elm.setAttribute("data-cell-week-index", `${cellsWeeksIndex}`);
+        elm.style.setProperty("grid-area", `cell-week-${cellsWeeksIndex}`);
+        elm.innerText = `${cellsWeeksIndex + 1}`;
+        drawCalendar.appendChild(elm);
+      }
+
+      for (const cellsYearsIndex of cellsYearsIndexes) {
+        const elm = document.createElement("span");
+        elm.classList.add("cell-year-index");
+        elm.setAttribute("data-cell-year-index", `${cellsYearsIndex}`);
+        elm.style.setProperty("grid-area", `cell-year-${cellsYearsIndex}`);
+        elm.innerText = `${cellsYearsIndex + 1}`;
+        drawCalendar.appendChild(elm);
+      }
 
       for (const weekIndex of weekIndexes) {
-        const div = document.createElement("box-week-component");
-        div.setAttribute("x-week-index", `${weekIndex}`);
-        drawCalendar.appendChild(div);
+        const elm = document.createElement("box-week-component");
+        elm.setAttribute("x-week-index", `${weekIndex + 1}`);
+        elm.style.setProperty("grid-area", `cell-indicator-${weekIndex}`);
+        drawCalendar.appendChild(elm);
       }
     </script>
   </body>
