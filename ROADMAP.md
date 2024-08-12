@@ -31,6 +31,7 @@ The following roadmap provides an overview of the planned features, their expect
 | Feature | Status | Expected Completion Date |
 | --- | --- | --- |
 | Create Life Calendar Editor | On Design | September 2024 |
+| Create Life Calendar API Library | On Design | September 2024 |
 
 ## Proposals
 
@@ -51,3 +52,28 @@ The Life Calendar website can be accessed at https://jondotsoy.github.io/your-li
 ### Create Life Calendar Editor
 
 Implement an interactive web-based editor that allows users to connect their GitHub or Google Drive accounts, retrieve their life calendar events, and edit them in a text-based format using Markdown syntax. The editor should provide a user-friendly interface for adding, editing, and deleting events, as well as synchronizing changes with the connected cloud storage service.
+
+### Create Life Calendar API Library
+
+Develop a JavaScript library that can be used in both browser and Node.js environments (including Bun and Deno) to parse and interpret life calendar events stored in Markdown format. The library should be designed as an API, allowing developers to easily integrate it into their applications.
+
+The API should provide methods for:
+
+*   Parsing Markdown-formatted life calendars
+*   Serializing parsed life calendar data into a usable format (e.g., JSON)
+*   Displaying life calendar events in a human-readable format (e.g., HTML)
+
+This library will be used to power the Life Calendar website, allowing it to dynamically generate and display life calendar events from Markdown-formatted sources.
+
+**Library Requirements:**
+
+*   Browser compatibility (latest versions of Chrome, Firefox, Edge, etc.)
+*   Node.js compatibility (14.x and later)
+*   Compatibility with Bun and Deno
+
+**API Endpoints:**
+
+*   `parseLifeCalendar(markdownText)`: Returns a JSON object containing the parsed life calendar events
+*   `serializeLifeCalendar(jsonData)`: Serializes the provided JSON data into Markdown format
+
+![sample show your birthday on week 1](./docs/assets/focus-week-1-show-event-your-birthday.png)
