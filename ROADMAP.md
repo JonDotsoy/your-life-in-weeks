@@ -17,7 +17,7 @@ The following roadmap provides an overview of the planned features, their expect
 
 | Feature | Expected Release Date |
 | --- | --- |
-| Create Life Calendar Website | August 2024 |
+| [Create Life Calendar Website](#create-life-calendar-website) | August 2024 |
 
 ### ⏳ Planned
 
@@ -30,8 +30,8 @@ The following roadmap provides an overview of the planned features, their expect
 
 | Feature | Status | Expected Completion Date |
 | --- | --- | --- |
-| Create Life Calendar Editor | On Design | September 2024 |
-| Create Life Calendar API Library | On Design | September 2024 |
+| [Create Life Calendar Editor](#create-life-calendar-editor) | On Design | September 2024 |
+| [Create Life Calendar API Library](#create-life-calendar-api-library) | On Design | September 2024 |
 
 ## Proposals
 
