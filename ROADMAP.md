@@ -17,6 +17,7 @@ The following roadmap provides an overview of the planned features, their expect
 
 | Feature | Expected Release Date |
 | --- | --- |
+| Create Life Calendar Website | August 2024 |
 
 ### ⏳ Planned
 
@@ -29,6 +30,7 @@ The following roadmap provides an overview of the planned features, their expect
 
 | Feature | Status | Expected Completion Date |
 | --- | --- | --- |
+| Create Life Calendar Editor | On Design | September 2024 |
 
 ## Proposals
 
@@ -45,3 +47,7 @@ The following proposal outlines a potential feature and its expected timeline:
 Create a web page that displays the "Life Calendar" in a visually appealing and user-friendly manner, allowing users to print or download the calendar for their personal use. The page should include a brief introduction to the concept of the life calendar, along with a clear layout and design that makes it easy to navigate and find specific events and dates.
 
 The Life Calendar website can be accessed at https://jondotsoy.github.io/your-life-in-weeks/life-calendar.
+
+### Create Life Calendar Editor
+
+Implement an interactive web-based editor that allows users to connect their GitHub or Google Drive accounts, retrieve their life calendar events, and edit them in a text-based format using Markdown syntax. The editor should provide a user-friendly interface for adding, editing, and deleting events, as well as synchronizing changes with the connected cloud storage service.
