@@ -32,6 +32,7 @@ The following roadmap provides an overview of the planned features, their expect
 | --- | --- | --- |
 | [Create Life Calendar Editor](#create-life-calendar-editor) | On Design | September 2024 |
 | [Create Life Calendar API Library](#create-life-calendar-api-library) | On Design | September 2024 |
+| [Button copy button compatible with HTML format](#button-copy-button-compatible-with-html-format) | On Design | August 2024 |
 
 ## Proposals
 
@@ -77,3 +78,8 @@ This library will be used to power the Life Calendar website, allowing it to dyn
 *   `serializeLifeCalendar(jsonData)`: Serializes the provided JSON data into Markdown format
 
 ![sample show your birthday on week 1](./docs/assets/focus-week-1-show-event-your-birthday.png)
+
+### Button copy button compatible with HTML format
+
+On page generator the roadmap generated have a button to copy the content on markdown format. using the api clipboard is required write on clipboard on markdown, plain and HTML formats.
+
